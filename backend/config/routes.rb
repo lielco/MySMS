@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       root "messages#index"
       get "/messages", to: "messages#index"
+      post "/messages", to: "messages#create"
     end
   end
 end
