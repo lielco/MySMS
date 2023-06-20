@@ -23,5 +23,10 @@ module Backend
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # Custom application related configuration
+    config.x.sms.twilio.sender_number = "+18558362743"
+    config.x.sms.twilio.account_sid = "AC680381c945d3647c8832edadbc18e92a"
+
   end
 end

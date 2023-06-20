@@ -1,3 +1,5 @@
+require 'sms_handler'
+
 class Api::V1::MessagesController < ApplicationController
   def index
     messages = Message.all()
@@ -9,9 +11,14 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def create
+    recipient_phone_number = message_params[:recipient_phone_number]
+    body = message_params[:body]
+
+    sms = SmsHandler.new
+    sms.send_sms(to: recipient_phone_number, body: body)
     message = Message.new(
-      recipient_phone_number: message_params[:recipient_phone_number], 
-      body: message_params[:body])
+      recipient_phone_number: recipient_phone_number, 
+      body: body)
 
     if message.save
       render json:message, statue:200
