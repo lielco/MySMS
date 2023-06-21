@@ -1,6 +1,8 @@
 require 'sms_handler'
 
 class Api::V1::MessagesController < ApplicationController
+  before_action :authenticate_user!
+  
   def index
     messages = Message.all()
     render json:messages, status:200
