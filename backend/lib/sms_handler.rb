@@ -15,7 +15,5 @@ class SmsHandler
         to: to,
         body: body
         )
-
-        puts message.sid
     end
 end

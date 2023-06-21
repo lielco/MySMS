@@ -2,9 +2,9 @@ require 'sms_handler'
 
 class Api::V1::MessagesController < ApplicationController
   before_action :authenticate_user!
-  
+
   def index
-    messages = Message.all()
+    messages = current_user.messages
     render json:messages, status:200
   end
 
@@ -18,9 +18,12 @@ class Api::V1::MessagesController < ApplicationController
 
     sms = SmsHandler.new
     sms.send_sms(to: recipient_phone_number, body: body)
+    
     message = Message.new(
       recipient_phone_number: recipient_phone_number, 
-      body: body)
+      body: body,
+      user_id: current_user.id
+    )
 
     if message.save
       render json:message, statue:200

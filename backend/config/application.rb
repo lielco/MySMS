@@ -24,6 +24,13 @@ module Backend
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
+    # This also configures session_options for use below
+    config.session_store :cookie_store, key: '_interslice_session'
+
+    # Required for all session management (regardless of session_store)
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use config.session_store, config.session_options
+
     # Custom application related configuration
     config.x.sms.twilio_sender_number = "+18558362743"
     config.x.sms.twilio_account_sid = "AC680381c945d3647c8832edadbc18e92a"
