@@ -15,9 +15,7 @@ export class SendmessageComponent {
     body: new FormControl(''),
   });
 
-  constructor(private messageService: MessageService) {
-
-  }
+  constructor(private messageService: MessageService) {}
   
   onSubmit() {
     this.messageService.sendMessage(this.messageForm.value).subscribe(

@@ -7,12 +7,14 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { ListmessagesComponent } from './listmessages/listmessages.component';
 import { SendmessageComponent } from './sendmessage/sendmessage.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListmessagesComponent,
-    SendmessageComponent
+    SendmessageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
