@@ -9,5 +9,8 @@
             <textarea class="form-control" id="message" rows="3" formControlName="body"></textarea>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
-    </form>    
+    </form>
+    <div *ngIf="loading" class="text-center m-5">
+        <span class="spinner-border spinner-border-lg align-center"></span>
+    </div>    
 </div>

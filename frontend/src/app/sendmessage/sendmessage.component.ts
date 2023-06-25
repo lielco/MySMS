@@ -9,6 +9,7 @@ import { MessageService } from '../services/message.service';
 })
 export class SendmessageComponent {
   message: any
+  loading = false;
 
   messageForm = new FormGroup({
     recipient_phone_number: new FormControl(''),
@@ -18,9 +19,11 @@ export class SendmessageComponent {
   constructor(private messageService: MessageService) {}
   
   onSubmit() {
+    this.loading = true;
     this.messageService.sendMessage(this.messageForm.value).subscribe(
       message => {
         this.message = message
+        this.loading = false;
       }
     );
   }
