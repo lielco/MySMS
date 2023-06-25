@@ -34,6 +34,7 @@ module Backend
     # Custom application related configuration
     config.x.sms.twilio_sender_number = "+18558362743"
     config.x.sms.twilio_account_sid = "AC680381c945d3647c8832edadbc18e92a"
+    config.x.sms.twilio_auth_token = "eeec9054dc6f52fa4b7e7121d0307065"
 
   end
 end
