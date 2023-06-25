@@ -12,10 +12,17 @@ export class AccountService {
   constructor(private http: HttpClient) { }
 
   public login(email: string, password: string) {
-    console.log("in login")
     return this.http.post('http://127.0.0.1:3000/api/auth/sign_in', { email, password }, {observe: 'response'})
             .subscribe( response => {
-              console.log(response.headers.get('client'))
+              localStorage.setItem(this.tokenKey, response.headers.get(this.tokenKey) || '');
+              localStorage.setItem(this.clientKey, response.headers.get(this.clientKey) || '');
+              localStorage.setItem(this.uidKey, response.headers.get(this.uidKey) || '');
+            });
+  }
+
+  public register(email: string, password: string) {
+    return this.http.post('http://127.0.0.1:3000/api/auth', { email, password }, {observe: 'response'})
+            .subscribe( response => {
               localStorage.setItem(this.tokenKey, response.headers.get(this.tokenKey) || '');
               localStorage.setItem(this.clientKey, response.headers.get(this.clientKey) || '');
               localStorage.setItem(this.uidKey, response.headers.get(this.uidKey) || '');

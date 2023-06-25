@@ -9,13 +9,15 @@ import { ListmessagesComponent } from './listmessages/listmessages.component';
 import { SendmessageComponent } from './sendmessage/sendmessage.component';
 import { LoginComponent } from './login/login.component';
 import { TokenInterceptor } from './helpers/token.interceptor';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListmessagesComponent,
     SendmessageComponent,
-    LoginComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
