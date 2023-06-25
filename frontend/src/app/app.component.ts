@@ -7,11 +7,10 @@ import { AccountService } from './account.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
-  constructor(private accountService: AccountService,) {}
   
+  constructor(private accountService: AccountService,) {}
+
   logout(): void {
-    console.log("in logout")
     this.accountService.logout();
   }
 }

@@ -1,5 +1,7 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +11,7 @@ export class AccountService {
   private uidKey = 'uid'
   private tokenKey = 'access-token'
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   public login(email: string, password: string) {
     return this.http.post('http://127.0.0.1:3000/api/auth/sign_in', { email, password }, {observe: 'response'})
@@ -17,10 +19,12 @@ export class AccountService {
               localStorage.setItem(this.tokenKey, response.headers.get(this.tokenKey) || '');
               localStorage.setItem(this.clientKey, response.headers.get(this.clientKey) || '');
               localStorage.setItem(this.uidKey, response.headers.get(this.uidKey) || '');
+              this.router.navigate(['']);
             });
   }
 
   public register(email: string, password: string) {
+    this.router.navigate(['account/login']);
     return this.http.post('http://127.0.0.1:3000/api/auth', { email, password }, {observe: 'response'})
             .subscribe( response => {
               localStorage.setItem(this.tokenKey, response.headers.get(this.tokenKey) || '');
@@ -33,6 +37,7 @@ export class AccountService {
     localStorage.removeItem(this.tokenKey);
     localStorage.removeItem(this.clientKey);
     localStorage.removeItem(this.uidKey);
+    this.router.navigate(['account/login']);
   }
 
   public isLoggedIn(): boolean {
