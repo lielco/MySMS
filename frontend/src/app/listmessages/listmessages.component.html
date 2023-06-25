@@ -1,17 +1,13 @@
 <h1>Messages</h1>
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">Recipient</th>
-        <th scope="col">Message</th>
-        <th scope="col">Sent At</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let message of messages">
-        <td> {{ message.recipient_phone_number }} </td>
-        <td> {{ message.body }} </td>
-        <td> {{ message.created_at }} </td>
-      </tr>
-    </tbody>
-  </table>
+<br>
+<div class="list-group">
+  <ng-container *ngFor="let message of messages">
+  <a href="#" class="list-group-item" aria-current="true">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{ message.recipient_phone_number }}</h5>
+      <small>{{ message.created_at }}</small>
+    </div>
+    <p class="mb-1">{{ message.body }}</p>
+  </a>
+  </ng-container>
+</div>

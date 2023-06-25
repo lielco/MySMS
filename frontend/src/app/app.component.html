@@ -1,5 +1,5 @@
 <!-- nav -->
-<nav class="navbar navbar-expand navbar-dark bg-dark px-3 justify-content-between">
+<nav class="navbar navbar-expand navbar-dark bg-dark px-3 justify-content-between" *ngIf="isLoggedIn()" >
     <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/">Messages</a>
         <a class="nav-item nav-link" routerLink="message/send">Send a Message</a>
@@ -8,9 +8,6 @@
 </nav>
 
 <!-- main app container -->
-<div class="container">
-    <!-- <app-login></app-login> -->
-    <!-- <app-sendmessage></app-sendmessage>
-    <app-listmessages></app-listmessages> -->
+<div class="container mt-3">
     <router-outlet></router-outlet>
 </div>

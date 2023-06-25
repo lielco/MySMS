@@ -10,6 +10,10 @@ export class AppComponent {
   
   constructor(private accountService: AccountService,) {}
 
+  isLoggedIn(): boolean {
+    return this.accountService.isLoggedIn()
+  }
+
   logout(): void {
     this.accountService.logout();
   }
