@@ -1,8 +1,10 @@
 require 'sms_handler'
 
+# Controller for messages - requires user authentication
 class Api::V1::MessagesController < ApplicationController
   before_action :authenticate_user!
 
+  # Retrieves all messages for the current user
   def index
     messages = current_user.messages
     render json:messages, status:200
@@ -12,6 +14,7 @@ class Api::V1::MessagesController < ApplicationController
     message = Message.new
   end
 
+  # Creates a new message and saves it to the DB
   def create
     recipient_phone_number = message_params[:recipient_phone_number]
     body = message_params[:body]

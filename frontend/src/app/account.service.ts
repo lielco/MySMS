@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 
+// Class to manage all user account related tasks
 @Injectable({
   providedIn: 'root'
 })
@@ -13,6 +14,7 @@ export class AccountService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
+  // Login user and save auth data to local storage
   public login(email: string, password: string) {
     return this.http.post('http://127.0.0.1:3000/api/auth/sign_in', { email, password }, {observe: 'response'})
             .subscribe( response => {
@@ -23,6 +25,7 @@ export class AccountService {
             });
   }
 
+  // Register new user and save auth data to local storage
   public register(email: string, password: string) {
     return this.http.post('http://127.0.0.1:3000/api/auth', { email, password }, {observe: 'response'})
             .subscribe( response => {
@@ -33,6 +36,7 @@ export class AccountService {
             });
   }
 
+  // Logout user and delete auth data from local storage
   public logout() {
     localStorage.removeItem(this.tokenKey);
     localStorage.removeItem(this.clientKey);
@@ -40,6 +44,7 @@ export class AccountService {
     this.router.navigate(['account/login']);
   }
 
+  // Check if there's a user logged in and it's auth data is valid
   public isLoggedIn(): boolean {
     let token = localStorage.getItem(this.tokenKey);
     let client = localStorage.getItem(this.clientKey);
@@ -47,6 +52,7 @@ export class AccountService {
     return token != null && token.length > 0 && client != null && client.length > 0 && uid != null && uid.length > 0;
   }
 
+  // Functions to get auth data
   public getToken(): string | null {
     return localStorage.getItem(this.tokenKey);
   }

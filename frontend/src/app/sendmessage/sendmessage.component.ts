@@ -7,6 +7,8 @@ import { MessageService } from '../services/message.service';
   templateUrl: './sendmessage.component.html',
   styleUrls: ['./sendmessage.component.scss']
 })
+
+// Component for composing and sending a message
 export class SendmessageComponent {
   message: any
   loading = false;
@@ -18,6 +20,7 @@ export class SendmessageComponent {
 
   constructor(private messageService: MessageService) {}
   
+  // Sends the message
   onSubmit() {
     this.loading = true;
     this.messageService.sendMessage(this.messageForm.value).subscribe(

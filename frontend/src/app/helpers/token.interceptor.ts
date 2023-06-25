@@ -3,6 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { AccountService } from "../account.service";
 
+// Interceptor to add auth headers to outgoing requests
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
   constructor(public accountService: AccountService) {}

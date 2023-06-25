@@ -11,7 +11,7 @@ const routes: Routes = [
     { path: 'message/send', component: SendmessageComponent },
     { path: 'account/login', component: LoginComponent },
     { path: 'account/register', component: RegisterComponent},
-    //{ path: '**', redirectTo: '' }
+    { path: '**', redirectTo: '' }
     
 ];
 

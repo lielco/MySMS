@@ -6,6 +6,8 @@ import { MessageService } from '../services/message.service';
   templateUrl: './listmessages.component.html',
   styleUrls: ['./listmessages.component.scss']
 })
+
+// Component showcasing all the user's messages
 export class ListmessagesComponent {
   messages:any;
 
