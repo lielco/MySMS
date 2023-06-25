@@ -13,7 +13,6 @@ export class ListmessagesComponent {
     this.messages = messageService.listMessages().subscribe(
       message => {
         this.messages = message
-        console.log(this.messages);
       }
     )
   }
